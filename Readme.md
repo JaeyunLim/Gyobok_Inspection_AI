@@ -18,9 +18,10 @@
 ## 프로젝트 개발 실행과정
 ![image](https://github.com/JaeyunLim/Inspection_AI/assets/97609649/420abb01-64b3-47d8-952c-a06e0c8f5685)
 
+## 프로젝트 개발
+![image](https://github.com/JaeyunLim/Inspection_AI/assets/97609649/6045150c-9ff8-494c-86a5-88eccea9d84b)
 
-
-## 학습에 사용한 데이터들
-- 
+## 활용방안
+![image](https://github.com/JaeyunLim/Inspection_AI/assets/97609649/aacb726a-7ca7-4165-94cb-ee297e0c1aad)
 
 ## 발표자료 (이미지 등 일부 발췌)

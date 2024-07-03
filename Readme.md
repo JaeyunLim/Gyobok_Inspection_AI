@@ -1,7 +1,7 @@
 # Gyobok Inspection_AI 프로젝트 (School Uniform)
 
 ## 프로젝트 소개
-- 'School Uniform Inspection AI'는 카메라 모션 인식을 활용한 자동 교복 단속 AI 모델입니다.
+- 'Gyobok(School Uniform) Inspection AI'는 카메라 모션 인식을 활용한 자동 교복 단속 AI 모델입니다.
 - 이 프로젝트는 학생들의 교복 착용 상태를 자동으로 판단하여 바른생활부(선도부) 학생들의 업무를 효율적으로 지원합니다.
 
 ## 프로젝트 개발 동기

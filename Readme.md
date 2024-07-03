@@ -15,6 +15,9 @@
 - 사용자 친화적: 중일고 학생들이 학교 출입 시 간편하게 이용할 수 있는 SW 솔루션 제공
 - 다목적 활용: 교복 단속뿐만 아니라 학생들의 안전한 학교생활을 전반적으로 지원
 
+  ![image](https://github.com/JaeyunLim/Gyobok_Inspection_AI/assets/97609649/e4208759-271a-45c9-a15b-413648dfb38c)
+
+
 ## 프로젝트 개발 실행과정
 ![image](https://github.com/JaeyunLim/Inspection_AI/assets/97609649/420abb01-64b3-47d8-952c-a06e0c8f5685)
 

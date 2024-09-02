@@ -54,11 +54,6 @@ from utils.general import (LOGGER, Profile, check_file, check_img_size, check_im
 from utils.torch_utils import select_device, smart_inference_mode
 
 
-ser = serial.Serial('COM3', 9600)
-time.sleep(2)  
-
-last_detection_time = 0
-
 @smart_inference_mode()
 def run(
         weights=ROOT / 'yolov5s.pt',  # model path or triton URL
@@ -121,7 +116,6 @@ def run(
         dataset = LoadImages(source, img_size=imgsz, stride=stride, auto=pt, vid_stride=vid_stride)
     vid_path, vid_writer = [None] * bs, [None] * bs
 
-    signal_sent = False
 
     # Run inference
     model.warmup(imgsz=(1 if pt or model.triton else bs, 3, *imgsz))  # warmup
@@ -159,7 +153,6 @@ def run(
                 writer.writerow(data)
 
         # Process predictions
-        current_time = time.time()
 
         for i, det in enumerate(pred):  # per image
             seen += 1
@@ -240,29 +233,7 @@ def run(
         # Print time (inference-only)
         LOGGER.info(f"{s}{'' if len(det) else '(no detections), '}{dt[1].dt * 1E3:.1f}ms")
 
-        global last_detection_time
-        if 'Metal' in s and not signal_sent and (current_time - last_detection_time > cooldown_period):
-            ser.write(b'1')  # 바이트 형식으로 '1' 신호 전송
-            print("Metal Signal sent")
-            signal_sent = True  # 신호를 보냈음을 표시
-            last_detection_time = current_time
-            time.sleep(0.1)  # 짧은 대기 시간
-            
-        if 'Plastic' in s and not signal_sent and (current_time - last_detection_time > cooldown_period):
-            ser.write(b'2') 
-            print("Plastic Signal sent")
-            signal_sent = True 
-            last_detection_time = current_time
-            time.sleep(0.1) 
-
-        if 'Plastic bag' in s and not signal_sent and (current_time - last_detection_time > cooldown_period):
-            ser.write(b'3')  
-            print("Plastic bag Signal sent")
-            signal_sent = True  
-            last_detection_time = current_time
-            time.sleep(0.1)  
-        
-
+      
     # Print results
     t = tuple(x.t / seen * 1E3 for x in dt)  # speeds per image
     LOGGER.info(f'Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS per image at shape {(1, 3, *imgsz)}' % t)
@@ -317,6 +288,3 @@ def main(opt):
 if __name__ == '__main__':
     opt = parse_opt()
     main(opt)
-
-
-ser.close()
